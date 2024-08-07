@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// export makes this functon accessible outside the file
+// default tells the other file that this is the main function in this file
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+function Square() {
+
+  const [value, setValue] = useState(null);
+
+  function handleClick(){
+    setValue('X');
+  }
+  return <button className="square" onClick={handleClick}>{value}</button>;
 }
 
-export default App
+export default function Board() {
+  return (
+    <>
+      <div className="board-row">
+        <Square  />
+        <Square  />
+        <Square  />
+      </div>
+      <div className="board-row">
+        <Square  />
+        <Square  />
+        <Square  />
+      </div>
+      <div className="board-row">
+        <Square  />
+        <Square  />
+        <Square  />
+      </div>
+    </>
+  );
+}
